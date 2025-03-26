@@ -71,7 +71,7 @@ module InfluxDB2
       http = _prepare_http_client(uri)
 
       request = method.new(uri.request_uri)
-      request['Authorization'] = "Token #{@options[:token]}" if add_authorization
+      request['Authorization'] = "Bearer #{@options[:token]}" if add_authorization
       request['User-Agent'] = "influxdb-client-ruby/#{InfluxDB2::VERSION}"
       headers.each { |k, v| request[k] = v }
 
