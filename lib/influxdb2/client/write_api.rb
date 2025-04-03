@@ -212,6 +212,9 @@ module InfluxDB2
       uri.query = URI.encode_www_form(bucket: bucket_param, org: org_param, precision: precision_param.to_s)
 
       _post_text(payload, uri)
+    rescue StandardError => e
+      puts "at=debug method=write_raw exception=#{e.inspect} payload=#{payload}"
+      raise
     end
 
     # Item for batching queue
